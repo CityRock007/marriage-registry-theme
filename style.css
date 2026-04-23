@@ -1,0 +1,41 @@
+/*
+Theme Name:   Marriage Registry Master
+Theme URI:    https://github.com/CityRock007/marriage-registry-theme
+Description:  A high-performance, executive-level WordPress theme designed for Marriage Registries and Institutional dashboards. Features a modular architecture, custom step-by-step journey logic, and full integration with Registry Form Pro. Optimized for LiteSpeed and Servinux fintech ecosystems.
+Author:       James P. Friday
+Author URI:   https://github.com/CityRock007/CityRock007/
+Version:      1.2.0
+Text Domain:  marriage-registry
+Tags:         registry, fintech, corporate, responsive-layout, custom-colors, multi-step
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool.
+*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Developer Credit Styling - Hidden or shown based on Integrity Logic */
+.developer-credit {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.developer-credit a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.developer-credit a:hover {
+    text-decoration: underline;
+}

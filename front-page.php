@@ -59,7 +59,9 @@ get_header(); ?>
     /**
      * 6. UNIQUE FEATURE: STATUS TRACKER
      */
-    get_template_part( 'parts/registry-check' ); 
+    if ( get_theme_mod( 'show_registry_check', true ) ) {
+        get_template_part( 'parts/registry-check' ); 
+    }
     ?>
 
     <?php 

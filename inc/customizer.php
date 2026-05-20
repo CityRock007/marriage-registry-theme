@@ -787,6 +787,70 @@ function marriage_registry_customize_register( $wp_customize ) {
         'section'  => 'marriage_registry_checker_section',
         'type'     => 'text',
     ) );
+    // --- SECTION: Site Preloader Settings ---
+    $wp_customize->add_section( 'marriage_registry_preloader_section', array(
+        'title'       => __( 'Site Preloader', 'marriage-registry' ),
+        'priority'    => 25,
+        'description' => __( 'Manage the custom loading overlay animation for your website.', 'marriage-registry' ),
+    ) );
+
+    // 1. Master Toggle Control
+    $wp_customize->add_setting( 'enable_preloader', array(
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+        'transport'         => 'refresh',
+    ) );
+    $wp_customize->add_control( 'enable_preloader', array(
+        'label'    => __( 'Enable Animated Preloader', 'marriage-registry' ),
+        'section'  => 'marriage_registry_preloader_section',
+        'type'     => 'checkbox',
+    ) );
+
+    // 2. Preloader Layout/Animation Style Dropdown
+    $wp_customize->add_setting( 'preloader_style', array(
+        'default'           => 'luxury-heart',
+        'sanitize_callback' => 'sanitize_key',
+        'transport'         => 'refresh',
+    ) );
+    $wp_customize->add_control( 'preloader_style', array(
+        'label'    => __( 'Preloader Animation Style', 'marriage-registry' ),
+        'section'  => 'marriage_registry_preloader_section',
+        'type'     => 'select',
+        'choices'  => array(
+            'luxury-heart'    => __( 'Luxury Heart Pulse (Gold/Navy)', 'marriage-registry' ),
+            'minimal-spinner' => __( 'Minimal Elegant Ring Spinner', 'marriage-registry' ),
+            'infinite-grow'   => __( 'Triple Expanding Dots Fade', 'marriage-registry' ),
+        ),
+    ) );
+
+    // 3. Content Mode Select (Custom Text or Custom Logo Image)
+    $wp_customize->add_setting( 'preloader_content_mode', array(
+        'default'           => 'text',
+        'sanitize_callback' => 'sanitize_key',
+        'transport'         => 'refresh',
+    ) );
+    $wp_customize->add_control( 'preloader_content_mode', array(
+        'label'    => __( 'Display Element Type', 'marriage-registry' ),
+        'section'  => 'marriage_registry_preloader_section',
+        'type'     => 'radio',
+        'choices'  => array(
+            'text' => __( 'Custom Site Brand Text', 'marriage-registry' ),
+            'logo' => __( 'Use Site Custom Logo Image', 'marriage-registry' ),
+        ),
+    ) );
+
+    // 4. Custom Preloader Text Label String
+    $wp_customize->add_setting( 'preloader_custom_text', array(
+        'default'           => get_bloginfo('name'),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+    $wp_customize->add_control( 'preloader_custom_text', array(
+        'label'       => __( 'Custom Brand Text', 'marriage-registry' ),
+        'description' => __( 'Falls back to your core WordPress Site Title if left blank.', 'marriage-registry' ),
+        'section'     => 'marriage_registry_preloader_section',
+        'type'        => 'text',
+    ) );
 
 } // This brace correctly closes the marriage_registry_customize_register function
 add_action( 'customize_register', 'marriage_registry_customize_register' );

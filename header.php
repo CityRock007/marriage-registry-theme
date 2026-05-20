@@ -164,6 +164,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php get_template_part( 'parts/preloader' ); ?>
+
 <div id="menu-blur-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(2px); z-index: 10000; display: none;"></div>
 
 <?php get_template_part('parts/mobile-menu-drawer'); ?>

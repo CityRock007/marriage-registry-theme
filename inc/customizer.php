@@ -720,5 +720,73 @@ function marriage_registry_customize_register( $wp_customize ) {
         'label'    => __( 'Content Text Color', 'marriage-registry' ),
         'section'  => 'marriage_registry_page_settings',
     ) ) );
-}
+
+    // --- SECTION: Certificate Verification (registry-check.php) ---
+    $wp_customize->add_section( 'marriage_registry_checker_section', array(
+        'title'       => __( 'Certificate Verification', 'marriage-registry' ),
+        'priority'    => 115,
+        'description' => __( 'Customize the layout content inside your registry-check.php template file.', 'marriage-registry' ),
+    ) );
+
+    // Visibility Control
+    $wp_customize->add_setting( 'show_registry_check', array(
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+        'transport'         => 'refresh',
+    ) );
+    $wp_customize->add_control( 'show_registry_check', array(
+        'label'    => __( 'Show Verification Section on Homepage', 'marriage-registry' ),
+        'section'  => 'marriage_registry_checker_section',
+        'type'     => 'checkbox',
+    ) );
+
+    // Title Customizer Setting
+    $wp_customize->add_setting( 'checker_heading', array(
+        'default'           => 'Verify Your Marriage Certificate',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'checker_heading', array(
+        'label'    => __( 'Section Title', 'marriage-registry' ),
+        'section'  => 'marriage_registry_checker_section',
+        'type'     => 'text',
+    ) );
+
+    // Description Customizer Setting
+    $wp_customize->add_setting( 'checker_description', array(
+        'default'           => 'Enter your Registry Application Number (RAN) to track your status or verify the authenticity of a certificate.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'checker_description', array(
+        'label'    => __( 'Section Description Text', 'marriage-registry' ),
+        'section'  => 'marriage_registry_checker_section',
+        'type'     => 'textarea',
+    ) );
+
+    // Placeholder Customizer Setting
+    $wp_customize->add_setting( 'checker_placeholder', array(
+        'default'           => 'e.g. IMACN-2026-8849',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'checker_placeholder', array(
+        'label'    => __( 'Input Field Placeholder Hint', 'marriage-registry' ),
+        'section'  => 'marriage_registry_checker_section',
+        'type'     => 'text',
+    ) );
+
+    // Button Label Customizer Setting
+    $wp_customize->add_setting( 'checker_btn_text', array(
+        'default'           => 'Check Status',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ) );
+    $wp_customize->add_control( 'checker_btn_text', array(
+        'label'    => __( 'Button Action Text', 'marriage-registry' ),
+        'section'  => 'marriage_registry_checker_section',
+        'type'     => 'text',
+    ) );
+
+} // This brace correctly closes the marriage_registry_customize_register function
 add_action( 'customize_register', 'marriage_registry_customize_register' );
